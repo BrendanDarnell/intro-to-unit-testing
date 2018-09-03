@@ -59,21 +59,27 @@ describe(('fizzBuzzer'),function(){
 
 	it('should return the input number if not divisible by 5 or 3',function(){
 
-		const isNum = [7,11,16,44,-1];
+		const returnNum = [7,11,16,44,-1];
 
-		const isNotNum = [3,10,15,33,60]
+		const isDivisible = [3,10,15,33,60]
 
-		isNum.forEach((input)=>{
+		returnNum.forEach((input)=>{
 			const answer = fizzBuzzer(input);
 			expect(answer).to.equal(input);
 		});
 
-		isNotNum.forEach((input)=>{
+		isDivisible.forEach((input)=>{
 			const answer = fizzBuzzer(input);
 			expect(answer).to.not.equal(input);
 		});
 	});
 
+	it('should throw error message if arguement is not a number',function(){
 
+		const isNotNum = [false,undefined,"foo","15"];
 
+		isNotNum.forEach((input)=>{
+			expect((input)=>fizzBuzzer(input)).to.throw(Error);
+		});
+	});
 });
